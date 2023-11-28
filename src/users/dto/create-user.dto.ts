@@ -5,7 +5,6 @@ export const CreateUserDtoSchema = z
     name: z.string().nonempty(),
     email: z.string().nonempty(),
     password: z.string().nonempty(),
-    birthday: z.string().datetime(),
   })
   .required();
 

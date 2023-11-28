@@ -17,7 +17,6 @@ model User {
   password  String
   image     String?
   role      Role     @default(USER)
-  birthday  DateTime
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

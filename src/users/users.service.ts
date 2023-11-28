@@ -34,7 +34,6 @@ export class UsersService {
         name: createUserDto.name,
         email: createUserDto.email,
         password: await this.encryption(createUserDto.password),
-        birthday: createUserDto.birthday,
       },
     });
     return 'Success';
@@ -46,7 +45,7 @@ export class UsersService {
         id: true,
         name: true,
         email: true,
-        birthday: true,
+        // birthday: true,
         image: true,
         role: true,
       },
