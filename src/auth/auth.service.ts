@@ -10,6 +10,8 @@ import { UsersService } from 'src/users/users.service';
 
 @Injectable()
 export class AuthService {
+  private readonly revokedTokens: Set<string> = new Set();
+
   constructor(
     private readonly usersService: UsersService,
     private jwtService: JwtService,
@@ -40,6 +42,14 @@ export class AuthService {
     });
 
     return { user: payload, access, refresh };
+  }
+
+
+  async logout(token: string) {
+    this.revokedTokens.add(token);
+  }
+  async verifyToken(token: string): Promise<boolean> {
+    return !this.revokedTokens.has(token);
   }
 
   async checkUser(user: User, body) {

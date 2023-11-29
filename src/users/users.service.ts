@@ -27,7 +27,8 @@ export class UsersService {
   async create(createUserDto: CreateUserDto) {
     const exist = await this.findUserByEmail(createUserDto.email);
     if (exist) {
-      throw new ConflictException('User exist');
+      // throw new ConflictException('User exist');
+      console.log("User exist")
     }
     await this.prismaService.user.create({
       data: {
