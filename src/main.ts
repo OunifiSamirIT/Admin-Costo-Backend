@@ -10,7 +10,7 @@ async function bootstrap() {
   const logger = new Logger('MAIN');
 
 
-  const corsOptions: CorsOptions = {
+ const corsOptions: CorsOptions = {
     origin: 'http://localhost:3000', 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
