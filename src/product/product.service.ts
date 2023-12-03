@@ -14,7 +14,7 @@ export class ProductService {
   findAll() {
     const productsWithImages = this.prismaService.product.findMany({
       include: {
-        images: true, // Assuming 'images' is the name of the relation in the Product model
+        images: true,
       },
     });
 
