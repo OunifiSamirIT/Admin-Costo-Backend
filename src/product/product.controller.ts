@@ -16,11 +16,12 @@ export class ProductController {
   create(@Body() createProductDto: CreateProductDto) {
     return this.productService.create(createProductDto);
   }
-
   @Get()
-  async getAllProducts(): Promise<{ product: Product; firstImageUrl: string }[]> {
-      return this.uploadService.getAllProducts();
+  async findAll(): Promise<Product[]> {
+    return this.productService.findAll();
   }
+  
+  
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.productService.findOne(+id);

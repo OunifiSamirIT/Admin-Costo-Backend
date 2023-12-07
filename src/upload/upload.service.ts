@@ -13,7 +13,7 @@ export class UploadService {
         const uploadedImages: string[] = [];
       
         for (const file of files) {
-          uploadedImages.push(`./images/${file.filename}`);
+          uploadedImages.push(`/images/${file.filename}`);
         }
       
         return uploadedImages;
@@ -42,21 +42,5 @@ export class UploadService {
     }
 
 
-    async getAllProducts(): Promise<{ product: Product; firstImageUrl: string }[]> {
-      const products = await this.prismaService.product.findMany({
-          include: {
-              images: {
-                  select: {
-                      url: true,
-                  },
-                
-              },
-          },
-      });
-
-      return products.map(product => ({
-          product,
-          firstImageUrl: product.images.length > 0 ? product.images[0].url : null,
-      }));
-  }
+ 
 }
