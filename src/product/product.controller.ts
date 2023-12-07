@@ -2,10 +2,15 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
+import { UploadService } from 'src/upload/upload.service';
+import { Product } from '@prisma/client';
 
 @Controller('product')
 export class ProductController {
-  constructor(private readonly productService: ProductService) {}
+  constructor(
+    private readonly productService: ProductService,
+    private readonly uploadService: UploadService
+    ) {}
 
   @Post()
   create(@Body() createProductDto: CreateProductDto) {
@@ -13,10 +18,9 @@ export class ProductController {
   }
 
   @Get()
-  findAll() {
-    return this.productService.findAll();
+  async getAllProducts(): Promise<{ product: Product; firstImageUrl: string }[]> {
+      return this.uploadService.getAllProducts();
   }
-
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.productService.findOne(+id);
