@@ -11,18 +11,8 @@ export class ProductService {
     return 'This action adds a new product';
   }
 
-  async findAll() {
-    const products = await this.prismaService.product.findMany({
-      select: {
-        id: true,
-        
-        // birthday: true,
-        images: true,
-        title: true,
-      },
-    });
-    return products;
-  }
+ 
+  
 
   findOne(id: number) {
     return `This action returns a #${id} product`;
