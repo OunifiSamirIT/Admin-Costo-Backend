@@ -11,13 +11,13 @@ async function bootstrap() {
   app.use('/images', express.static(join(__dirname, '..', 'images')));
 
  const corsOptions: CorsOptions = {
-    origin: 'http://localhost:3000', 
+    origin: 'http://localhost:5173', 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   };
 
   app.enableCors(corsOptions);
-
+ 
 
   app.setGlobalPrefix('/api'); 
   const port = process.env.PORT;
