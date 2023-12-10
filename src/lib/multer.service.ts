@@ -34,7 +34,7 @@ export class FileUploadService implements MulterOptionsFactory {
         fileSize: 1000000,
       },
       fileFilter: (req, file, callback) => {
-        const fileType = /jpeg|png|jpg/;
+        const fileType = /jpeg|png|jpg|webp/;
         const originalname = file.originalname || ''; // Ensure originalname exists
         const ext = fileType.test(extname(originalname));
         

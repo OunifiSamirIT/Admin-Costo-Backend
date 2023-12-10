@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { PrismaService } from 'src/lib/prisma.service';
@@ -29,7 +29,35 @@ export class ProductService {
     return `This action updates a #${id} product`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} product`;
+  async remove(id: number) {
+    try {
+      const product = await this.prismaService.product.findUnique({
+        where: { id },
+        include: {
+          images: true,
+        },
+      });
+
+      if (!product) {
+        throw new NotFoundException(`Product with id ${id} not found`);
+      }
+
+      // Delete the related images
+      await this.prismaService.productImage.deleteMany({
+        where: {
+          productId: id,
+        },
+      });
+
+      // Delete the product
+      await this.prismaService.product.delete({
+        where: { id },
+      });
+
+      return `Product with id ${id} and its related images removed`;
+    } catch (error) {
+      // Handle and log the error, and re-throw if necessary
+      throw new Error(`Error removing product: ${error.message}`);
+    }
   }
 }

@@ -6,6 +6,6 @@ import { AnyFilesInterceptor } from '@nestjs/platform-express';
 
 @Module({
   controllers: [ProductController],
-  providers: [ProductService , PrismaService]
+  providers: [ProductService, PrismaService],
 })
 export class ProductModule {}
