@@ -23,8 +23,19 @@ export class ProductService {
   }
   
 
-  findOne(id: number) {
-    return `This action returns a #${id} product`;
+  async findOne(id: number): Promise<Product> {
+    const product = await this.prismaService.product.findUnique({
+      where: { id },
+      include: {
+        images: true,
+      },
+    });
+
+    if (!product) {
+      throw new NotFoundException(`Product with id ${id} not found`);
+    }
+
+    return product;
   }
 
   update(id: number, updateProductDto: UpdateProductDto) {
