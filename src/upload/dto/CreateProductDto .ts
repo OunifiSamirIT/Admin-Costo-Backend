@@ -9,6 +9,7 @@ export class CreateProductDto {
     category: string;
     thumbnail: string;
     images: CreateProductImageDto[];
+    checkoutId?: number;
   }
   
   export class CreateProductImageDto {
