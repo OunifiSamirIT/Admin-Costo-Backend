@@ -17,27 +17,7 @@ export class UploadService {
     return uploadedImages;
   }
 
-  // async createProduct(createProductDto: CreateProductDto, imageUrls: string[]): Promise<Product> {
-
-  //     const product = await this.prismaService.product.create({
-  //     data: {
-  //       title: createProductDto.title,
-  //       description: createProductDto.description,
-  //       price: createProductDto.price,
-  //       discountPercentage: createProductDto.discountPercentage,
-  //       rating: createProductDto.rating,
-  //       stock: createProductDto.stock,
-  //       brand: createProductDto.brand,
-  //       category: createProductDto.category,
-  //       thumbnail: createProductDto.thumbnail,
-  //       images: {
-  //         create: imageUrls.map(url => ({ url })),
-  //       },
-  //     },
-  //   });
-
-  //   return product;
-  // }
+ 
 
   async createProduct(
     createProductDto: CreateProductDto,
@@ -50,9 +30,10 @@ export class UploadService {
       discountPercentage: createProductDto.discountPercentage,
       rating: createProductDto.rating,
       stock: createProductDto.stock,
-      brand: createProductDto.brand,
+      Color: createProductDto.Color,
       category: createProductDto.category,
-      thumbnail: createProductDto.thumbnail,
+      Tag: createProductDto.Tag,
+      Taille: createProductDto.Taille,
       images: {
         create: imageUrls.map((url) => ({ url })),
       },

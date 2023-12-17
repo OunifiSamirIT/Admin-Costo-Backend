@@ -58,21 +58,18 @@ export class ProductService {
         throw new NotFoundException(`Product with id ${id} not found`);
       }
 
-      // Delete the related images
       await this.prismaService.productImage.deleteMany({
         where: {
           productId: id,
         },
       });
 
-      // Delete the product
       await this.prismaService.product.delete({
         where: { id },
       });
 
       return `Product with id ${id} and its related images removed successfulyy`;
     } catch (error) {
-      // Handle and log the error, and re-throw if necessary
       throw new Error(`Error removing product: ${error.message}`);
     }
   }

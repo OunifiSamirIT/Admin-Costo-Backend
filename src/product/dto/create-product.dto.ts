@@ -5,9 +5,10 @@ export class CreateProductDto {
   discountPercentage: string;
   rating: string;
   stock: string;
-  brand: string;
+  Tag: string;
   category: string;
-  thumbnail: string;
+  Color: string;
+  Taille: string;
   images: CreateProductImageDto[];
 }
 

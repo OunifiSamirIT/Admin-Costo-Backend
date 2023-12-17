@@ -29,9 +29,10 @@ export class CheckoutService {
             discountPercentage: product.discountPercentage,
             rating: product.rating,
             stock: product.stock,
-            brand: product.brand,
+            Tag: product.Tag,
             category: product.category,
-            thumbnail: product.thumbnail,
+            Color: product.Color,
+            Taille: product.Taille,
             images: {
               create: product.images.map((image) => ({ url: image.url })),
             },

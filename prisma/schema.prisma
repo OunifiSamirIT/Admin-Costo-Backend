@@ -7,8 +7,9 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  // url      = "mysql://root:@localhost:3306/test"
-  url      = env("DATABASE_URL")
+   url      ="mysql://admin:password123@database-1.c7iyos46stk9.us-east-1.rds.amazonaws.com:3306/costo"
+
+  // url      = env("DATABASE_URL")
 }
 
 model User {
@@ -36,9 +37,10 @@ model Product {
   discountPercentage String
   rating           String
   stock            String
-  brand            String
+  Tag              String
   category         String
-  thumbnail        String
+  Color            String
+  Taille            String
   images           ProductImage[]
   checkoutId       Int?
   checkout         Checkout?  @relation(fields: [checkoutId], references: [id])
