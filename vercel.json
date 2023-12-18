@@ -1,21 +1,24 @@
-{
+  {
     "version": 2,
     "builds": [
       {
-        "src": "dist/main/*",
-        "use": "@vercel/node"
+        "src": "dist/**",
+        "use": "@now/node"
       }
     ],
+    "routes": [
+      { "src": "/(.*)", "dest": "/dist/$1" }
+    ],
     "env": {
+      "PORT": 5000,
       "DATABASE_URL": "mysql://admin:password123@database-1.c7iyos46stk9.us-east-1.rds.amazonaws.com:3306/costo"
     },
-    "routes": [
-      {
-        "src": "/images/(.*)",
-        "dest": "/images/$1"
+    "build": {
+      "env": {
+        "NODE_ENV": "production"
       },
-      { "handle": "filesystem" },
-      { "src": "/(.*)", "dest": "/dist/main/$1" }
-    ]
+      "scripts": {
+        "build": "npm run build"
+      }
+    }
   }
-  
