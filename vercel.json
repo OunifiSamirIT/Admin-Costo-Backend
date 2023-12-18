@@ -4,10 +4,6 @@
       {
         "src": "dist/main/*",
         "use": "@vercel/node"
-      },
-      {
-        "src": "prisma/schema.prisma",
-        "use": "prisma"
       }
     ],
     "env": {
