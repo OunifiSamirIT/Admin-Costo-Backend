@@ -1,0 +1,26 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "dist/main/*",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "prisma/schema.prisma",
+        "use": "@prisma/cli"
+      }
+    ],
+    "env": {
+      "PORT": 5000,
+      "DATABASE_URL": "mysql://admin:password123@database-1.c7iyos46stk9.us-east-1.rds.amazonaws.com:3306/costo"
+    },
+    "routes": [
+      {
+        "src": "/images/(.*)",
+        "dest": "/images/$1"
+      },
+      { "handle": "filesystem" },
+      { "src": "/(.*)", "dest": "/dist/main/$1" }
+    ]
+  }
+  
