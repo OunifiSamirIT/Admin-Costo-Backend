@@ -11,7 +11,7 @@ import { CheckoutModule } from './checkout/checkout.module';
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath:
-        process.env.NODE_ENV === 'production'
+        process.env.NODE_ENV === 'development'
           ? '.env.production'
           : '.env.development',
     }),

@@ -1,7 +1,7 @@
 import { Body, Controller, Headers, HttpCode, Post } from '@nestjs/common';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from '../users/users.service';
 import { loginDto, loginSchema } from './dto/login.dto';
-import { ZodValidationPipe } from 'src/lib/zod.transform';
+import { ZodValidationPipe } from '../lib/zod.transform';
 import { AuthService } from './auth.service';
 
 @Controller('auth')
