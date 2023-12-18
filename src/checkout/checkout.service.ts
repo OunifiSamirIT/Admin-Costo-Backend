@@ -2,7 +2,7 @@
 
 import { Injectable } from '@nestjs/common';
 import { CreateCheckoutDto } from './dto/create-checkout.dto';
-import { PrismaService } from 'src/lib/prisma.service';
+import { PrismaService } from '../lib/prisma.service';
 import { Checkout } from '@prisma/client';
 
 @Injectable()
