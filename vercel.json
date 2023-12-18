@@ -1,7 +1,7 @@
 {
     "version": 2,
     "env": {
-      "DATABASE_URL": "DATABASE_URL"
+      "DATABASE_URL": "mysql://admin:password123@database-1.c7iyos46stk9.us-east-1.rds.amazonaws.com:3306/costo"
     },
     "builds": [
       {
