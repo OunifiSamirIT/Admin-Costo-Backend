@@ -1,12 +1,4 @@
-// import { Injectable } from '@nestjs/common';
-// import {
-//   MulterModuleOptions,
-//   MulterOptionsFactory,
-// } from '@nestjs/platform-express';
-// import { diskStorage } from 'multer';
-// import path from 'path';
 
-// FileUploadService
 import { Injectable } from '@nestjs/common';
 import { MulterModuleOptions, MulterOptionsFactory } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
