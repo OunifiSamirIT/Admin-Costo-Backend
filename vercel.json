@@ -12,13 +12,19 @@
       }
     ],
     "routes": [
-      { "src": "/(.*)", "dest": "/nest/$1" }
+      { "src": "/(.*)", "dest": "/dist/$1" }
     ],
-    "env": {
-      "NODE_ENV": "production",
-      "PORT": "5000",
-
+    "envDevelopment": {
+      "NODE_ENV": "development",
       "DATABASE_URL": "mysql://root:@localhost:3306/CostoEcommerce"
+    },
+    "build": {
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "commands": {
+        "build": "npm run prisma:generate && npm run build"
+      }
     }
   }
   
