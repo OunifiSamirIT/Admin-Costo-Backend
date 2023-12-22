@@ -9,7 +9,7 @@ export class FileUploadService implements MulterOptionsFactory {
   createMulterOptions(): MulterModuleOptions {
     return {
       storage: diskStorage({
-        destination: './images',
+        destination: './src/public',
         filename: (req, file, callback) => {
           const randomName = Array(32)
             .fill(null)

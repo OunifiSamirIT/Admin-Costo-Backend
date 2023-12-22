@@ -11,7 +11,7 @@ export class UploadService {
     const uploadedImages: string[] = [];
 
     for (const file of files) {
-      uploadedImages.push(`/images/${file.filename}`);
+      uploadedImages.push(`/src/public/${file.filename}`);
     }
 
     return uploadedImages;

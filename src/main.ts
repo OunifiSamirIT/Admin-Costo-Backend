@@ -4,12 +4,14 @@ import { Logger } from '@nestjs/common';
 import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
 import * as express from 'express';
 import { join } from 'path';
+import * as dotenv from 'dotenv';
 
 async function bootstrap() {
+  dotenv.config();
   const app = await NestFactory.create(AppModule);
   const logger = new Logger('MAIN');
 
-  app.use('/images', express.static(join(__dirname, '..', 'images')));
+  app.use('/src/public', express.static(join(__dirname, '..', '/src/public')));
 
   const corsOptions: CorsOptions = {
     origin: 'http://localhost:5173',

@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+    output   = "./generated/client"
+
+}
+
+datasource db {
+  provider = "mysql"
+  //  url      ="mysql://admin:password123@database-1.c7iyos46stk9.us-east-1.rds.amazonaws.com:3306/costo"
+   url      = env("DATABASE_URL")
+
+  //  url      ="mysql://root:@localhost:3306/CostoEcommerce"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  image     String?
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model Product {
+  id               Int       @id @default(autoincrement())
+  title            String
+  description      String
+  price            String
+  discountPercentage String
+  rating           String
+  stock            String
+  Tag              String
+  category         String
+  Color            String
+  Taille            String
+  images           ProductImage[]
+  checkoutId       Int?
+  checkout         Checkout?  @relation(fields: [checkoutId], references: [id])
+}
+
+model ProductImage {
+  id       Int      @id @default(autoincrement())
+  url      String
+  productId Int
+  product  Product  @relation(fields: [productId], references: [id])
+}
+
+
+model Checkout {
+  id               Int       @id @default(autoincrement())
+  name             String
+  phone            String
+  email            String
+  address          String
+  governorate      String
+  delivery         String
+  total            Float
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  products         Product[]
+}
