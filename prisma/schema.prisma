@@ -8,8 +8,9 @@ generator client {
 datasource db {
   provider = "mysql"
   //  url      ="mysql://admin:password123@database-1.c7iyos46stk9.us-east-1.rds.amazonaws.com:3306/costo"
+   url      = env("DATABASE_URL")
 
-   url      ="mysql://root:@localhost:3306/CostoEcommerce"
+  //  url      ="mysql://root:@localhost:3306/CostoEcommerce"
 }
 
 model User {
