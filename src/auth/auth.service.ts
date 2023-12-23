@@ -4,7 +4,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { User } from '.prisma/client';
+import { User } from '@prisma/client';
 import { compare } from 'bcrypt';
 import { UsersService } from '../users/users.service';
 
@@ -22,6 +22,7 @@ export class AuthService {
     if (!user) {
       throw new NotFoundException('User not found');
     }
+    /* check user */
     await this.checkUser(user, body);
 
     /* creation token */
