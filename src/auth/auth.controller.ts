@@ -5,7 +5,7 @@ import { ZodValidationPipe } from '../lib/zod.transform';
 import { AuthService } from './auth.service';
 
 @Controller('auth')
-export class AuthController {
+export class AuthController { 
   constructor(
     private readonly authService: AuthService,
     private readonly usersService: UsersService,
