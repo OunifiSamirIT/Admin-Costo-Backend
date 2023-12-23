@@ -5,6 +5,7 @@ import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.int
 import * as express from 'express';
 import { join } from 'path';
 import * as dotenv from 'dotenv';
+import { hostname } from 'os';
 
 async function bootstrap() {
   dotenv.config();
@@ -23,8 +24,8 @@ async function bootstrap() {
 
   app.setGlobalPrefix('/api');
 
-  const port = 80 ; 
-  await app.listen(port);
+  const port = process.env.PORT || 5000; 
+  await app.listen(port , '0.0.0.0');
   logger.log(`Server running on port ${port}`);
 }
 
