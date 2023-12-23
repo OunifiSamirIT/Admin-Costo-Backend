@@ -23,7 +23,7 @@ async function bootstrap() {
 
   app.setGlobalPrefix('/api');
 
-  const port = process.env.PORT || 5000; 
+  const port = 80 ; 
   await app.listen(port);
   logger.log(`Server running on port ${port}`);
 }
