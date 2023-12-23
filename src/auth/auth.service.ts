@@ -11,7 +11,7 @@ import { UsersService } from '../users/users.service';
 @Injectable()
 export class AuthService {
   private readonly revokedTokens: Set<string> = new Set();
-
+  
   constructor(
     private readonly usersService: UsersService,
     private jwtService: JwtService,
@@ -22,7 +22,6 @@ export class AuthService {
     if (!user) {
       throw new NotFoundException('User not found');
     }
-    /* check user */
     await this.checkUser(user, body);
 
     /* creation token */
