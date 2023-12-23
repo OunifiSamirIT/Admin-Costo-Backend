@@ -15,7 +15,7 @@ async function bootstrap() {
   app.use('/src/public', express.static(join(__dirname, '..', '/src/public')));
 
   const corsOptions: CorsOptions = {
-    origin: 'http://localhost:5173',
+    origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   };
