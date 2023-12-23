@@ -22,7 +22,6 @@ export class AuthService {
     if (!user) {
       throw new NotFoundException('User not found');
     }
-    /* check user */
     await this.checkUser(user, body);
 
     /* creation token */
