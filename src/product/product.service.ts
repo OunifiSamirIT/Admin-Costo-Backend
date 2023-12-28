@@ -66,7 +66,7 @@ export class ProductService {
 
       await this.prismaService.product.delete({
         where: { id },
-      });
+      }); 
 
       return `Product with id ${id} and its related images removed successfulyy`;
     } catch (error) {
