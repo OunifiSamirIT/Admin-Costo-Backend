@@ -16,6 +16,12 @@ export class ProductController {
   create(@Body() createProductDto: CreateProductDto) {
     return this.productService.create(createProductDto);
   }
+
+  @Get('category/:category')
+  async findByCategory(@Param('category') category: string): Promise<Product[]> {
+    return this.productService.findByCategory(category);
+  }
+
   @Get()
   async findAll(): Promise<Product[]> {
     return this.productService.findAll();

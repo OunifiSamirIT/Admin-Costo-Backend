@@ -25,6 +25,19 @@ export class ProductService {
     return products;
   }
   
+  async findByCategory(category: string): Promise<Product[]> {
+    const products = await this.prismaService.product.findMany({
+      where: {
+        checkoutId: null,
+        category: category,
+      },
+      include: {
+        images: true,
+      },
+    });
+
+    return products;
+  }
 
   async findOne(id: number): Promise<Product> {
     const product = await this.prismaService.product.findUnique({
